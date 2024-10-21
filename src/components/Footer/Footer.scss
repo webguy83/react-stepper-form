@@ -1,0 +1,33 @@
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+
+  .go-back-btn {
+    color: var(--light-grey);
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0;
+
+    &:hover {
+      color: var(--dark-blue);
+    }
+  }
+
+  .next-step-btn {
+    padding: 1.5rem 2.5rem;
+    border: none;
+    font-size: 1.6rem;
+    border-radius: 0.8rem;
+    background-color: var(--primary-color);
+    color: var(--white);
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--bright-color);
+    }
+  }
+}
