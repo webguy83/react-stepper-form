@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import './MultiStepForm.scss';
+import useMediaQuery from '../../hooks/useMediaQuery ';
+
 
 interface Props {
   children: React.ReactNode;
@@ -9,6 +11,7 @@ interface Props {
 
 const MultiStepForm: React.FC<Props> = ({ children }) => {
   const [step, setStep] = useState(1);
+  const isMobile = useMediaQuery('(max-width:768px)');
 
   const handleNextStep = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault(); // Prevent default form submission
@@ -27,29 +30,34 @@ const MultiStepForm: React.FC<Props> = ({ children }) => {
   ];
 
   return (
-    <div className='center-wrapper'>
-      <div className='multistep-container'>
+    <form className="center-wrapper" onSubmit={handleNextStep}>
+      <div className="multistep-container">
         {/* Sidebar */}
-        <aside className='sidebar'>
-          <ol className='steps'>
+        <aside className="sidebar">
+          <ol className="steps">
             {stepTitles.map((item, index) => (
               <li key={index} className={`step ${step === index + 1 ? 'active' : ''}`}>
-                <span className='step-circle'>{index + 1}</span>
-                <span className='step-text'>
-                  <span className='step-number'>Step {index + 1}</span>
-                  <span className='step-title'>{item.title}</span>
+                <span className="step-circle">{index + 1}</span>
+                <span className="step-text">
+                  <span className="step-number">Step {index + 1}</span>
+                  <span className="step-title">{item.title}</span>
                 </span>
               </li>
             ))}
           </ol>
         </aside>
-        <form className='form-content' onSubmit={handleNextStep}>
+
+        {/* Main Content */}
+        <div className="form-content">
           <Header title={stepTitles[step - 1].title} description={stepTitles[step - 1].description} />
           {children}
-          <Footer onBack={step > 1 ? handleGoBack : undefined} />
-        </form>
+          {!isMobile && <Footer onBack={step > 1 ? handleGoBack : undefined} />}
+        </div>
       </div>
-    </div>
+
+      {/* Render Footer outside form-content for mobile view */}
+      {isMobile && <Footer onBack={step > 1 ? handleGoBack : undefined} />}
+    </form>
   );
 };
 

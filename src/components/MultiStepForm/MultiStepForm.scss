@@ -109,11 +109,7 @@
     flex-direction: column;
     max-width: 100%;
     padding: 0;
-  }
-
-  .multistep-container,
-  .sidebar {
-    border-radius: 0;
+    background-color: var(--light-blue);
   }
 
   .steps {
@@ -126,11 +122,23 @@
   }
 
   .form-content {
+    position: relative;
     padding: 2.4rem;
+    margin: -6rem 2rem 0;
+    width: auto;
+    background-color: var(--white);
+    border-radius: 1rem;
   }
 
   .sidebar {
     max-width: none;
+    min-height: 17.2rem;
     background-image: url('../../assets/images/bg-sidebar-mobile.svg');
+    border-radius: 0;
+  }
+
+  .center-wrapper {
+    flex-direction: column;
+    justify-content: space-between;
   }
 }
