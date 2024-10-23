@@ -3,29 +3,24 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Step1 from '../Step1/Step1';
 import './MultiStepForm.scss';
-import useFormValidation from '../../hooks/useFormValidation'; // Import the custom hook
+import useFormValidation from '../../hooks/useFormValidation';
 import useMediaQuery from '../../hooks/useMediaQuery ';
 
-interface Props {
-  children?: React.ReactNode;
-}
-
-const MultiStepForm: React.FC<Props> = () => {
-  const [step, setStep] = useState(1);
-  const isMobile = useMediaQuery('(max-width:768px)');
-
-  // Initialize form validation hook
-  const { formData, formErrors, isSubmitted, setIsSubmitted, handleFormChange, validate } = useFormValidation({
+const MultiStepForm: React.FC = () => {
+  const { formData, formErrors, isSubmitted, handleFormChange, handleSubmitValidation } = useFormValidation({
     name: '',
     email: '',
     phone: '',
   });
 
+  const [step, setStep] = useState(1);
+  const isMobile = useMediaQuery('(max-width:768px)');
+
   const handleNextStep = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setIsSubmitted(true); // Mark form as submitted
+    const isValid = handleSubmitValidation(); // Perform full validation before moving forward
 
-    if (validate()) {
+    if (isValid) {
       setStep((prev) => prev + 1); // Move to the next step only if the form is valid
     }
   };
@@ -63,10 +58,10 @@ const MultiStepForm: React.FC<Props> = () => {
         <div className='form-content'>
           <Header title={stepTitles[step - 1].title} description={stepTitles[step - 1].description} />
 
-          {/* Pass form data, errors, and change handler to Step1 */}
+          {/* Step 1 */}
           {step === 1 && <Step1 formData={formData} formErrors={formErrors} isSubmitted={isSubmitted} onChange={handleFormChange} />}
 
-          {/* Other steps will go here */}
+          {/* Other steps */}
           {!isMobile && <Footer onBack={step > 1 ? handleGoBack : undefined} />}
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 
 // Define types for form data and errors
 interface FormData {
@@ -18,7 +18,8 @@ const useFormValidation = (initialState: FormData) => {
   const [formErrors, setFormErrors] = useState<FormErrors>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const validate = () => {
+  // Memoize validate function so it remains stable across re-renders
+  const validate = useCallback(() => {
     const errors: FormErrors = {};
 
     if (!formData.name.trim()) {
@@ -38,8 +39,9 @@ const useFormValidation = (initialState: FormData) => {
 
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
-  };
+  }, [formData]);
 
+  // Handle input changes and immediately set the form data
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
@@ -48,13 +50,25 @@ const useFormValidation = (initialState: FormData) => {
     }));
   };
 
+  // useEffect to validate form whenever formData changes
+  useEffect(() => {
+    if (isSubmitted) {
+      validate(); // Run validation when form data changes
+    }
+  }, [formData, isSubmitted, validate]); // Validate whenever formData or submission state changes
+
+  const handleSubmitValidation = () => {
+    setIsSubmitted(true);
+    return validate(); // Validate entire form on submit
+  };
+
   return {
     formData,
     formErrors,
     isSubmitted,
-    setIsSubmitted,
+    setIsSubmitted, // Return setIsSubmitted for manual submission handling
     handleFormChange,
-    validate,
+    handleSubmitValidation,
   };
 };
 
