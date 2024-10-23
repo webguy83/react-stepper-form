@@ -1,40 +1,42 @@
-// Variables
-$primary-color: hsl(213, 96%, 18%);
-$secondary-color: hsl(243, 100%, 62%);
-$light-gray: hsl(229, 24%, 87%);
-$text-color: hsl(231, 11%, 63%);
+.step-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
 
-.form-group {
-  margin-bottom: 1.5rem;
+    label {
+      font-weight: 500;
+      font-size: 1.4rem;
+      color: var(--primary-color);
+    }
 
-  label {
-    font-weight: 500;
-    color: $primary-color;
-    margin-bottom: 0.5rem;
-  }
+    input {
+      padding: 1rem;
+      border: 1px solid var(--light-gray);
+      border-radius: 0.5rem;
+      font-family: inherit;
+      font-size: 1.4rem;
+      transition: border-color 0.3s ease;
 
-  input {
-    padding: 0.75rem;
-    border: 0.1rem solid $light-gray;
-    border-radius: 0.4rem;
+      &:focus {
+        outline: none;
+        border-color: var(--secondary-color);
+      }
 
-    font-size: 1.6rem;
-    width: 100%;
-  }
-}
+      &.error {
+        border-color: red;
+      }
+    }
 
-.next-step-btn {
-  background-color: $secondary-color;
-  color: white;
-  padding: 0.75rem;
-  font-weight: 500;
-  font-size: 1.6rem;
-  border: none;
-  border-radius: 0.4rem;
-  cursor: pointer;
-  margin-top: 1rem;
-
-  &:hover {
-    background-color: $primary-color;
+    .error-message {
+      color: red;
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
+    }
   }
 }
