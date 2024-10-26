@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Step1 from '../Step1/Step1';
+import Step2 from '../Step2/Step2';
 import './MultiStepForm.scss';
 import useFormValidation from '../../hooks/useFormValidation';
+import usePlanSelection from '../../hooks/usePlanSelection';
 import useMediaQuery from '../../hooks/useMediaQuery ';
 
 const MultiStepForm: React.FC = () => {
@@ -13,6 +15,8 @@ const MultiStepForm: React.FC = () => {
     phone: '',
   });
 
+  // Move the plan selection state here
+  const { billingType, selectedPlan, handlePlanChange, handleBillingToggle } = usePlanSelection();
   const [step, setStep] = useState(1);
   const isMobile = useMediaQuery('(max-width:768px)');
 
@@ -58,10 +62,11 @@ const MultiStepForm: React.FC = () => {
         <div className='form-content'>
           <Header title={stepTitles[step - 1].title} description={stepTitles[step - 1].description} />
 
-          {/* Step 1 */}
           {step === 1 && <Step1 formData={formData} formErrors={formErrors} isSubmitted={isSubmitted} onChange={handleFormChange} />}
 
-          {/* Other steps */}
+          {step === 2 && <Step2 billingType={billingType} selectedPlan={selectedPlan} onBillingToggle={handleBillingToggle} onPlanChange={handlePlanChange} />}
+
+          {/* Other steps will go here */}
           {!isMobile && <Footer onBack={step > 1 ? handleGoBack : undefined} />}
         </div>
       </div>

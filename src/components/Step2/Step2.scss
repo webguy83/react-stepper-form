@@ -1,0 +1,97 @@
+.step2-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+
+  .billing-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.6rem;
+
+    .toggle-button {
+      width: 5rem;
+      height: 2.6rem;
+      border-radius: 1.3rem;
+      background-color: var(--light-gray);
+      position: relative;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &.checked {
+        background-color: var(--secondary-color);
+      }
+
+      .toggle-switch {
+        width: 2.4rem;
+        height: 2.4rem;
+        background-color: var(--white);
+        border-radius: 50%;
+        position: absolute;
+        top: 0.1rem;
+        left: 0;
+        transition: transform 0.3s ease;
+      }
+
+      &.checked .toggle-switch {
+        transform: translateX(2.4rem);
+      }
+    }
+  }
+}
+
+.plan {
+  border: 1px solid var(--light-gray);
+  border-radius: 0.5rem;
+  padding: 1.6rem;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  width: 100%;
+
+  input {
+    display: none;
+  }
+
+  &.selected {
+    border-color: var(--secondary-color);
+    background-color: #f0f6ff;
+  }
+
+  .plan-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    .icon {
+      margin-bottom: 1.6rem;
+    }
+
+    .plan-name {
+      font-weight: bold;
+      font-size: 1.6rem;
+      color: var(--primary-color);
+    }
+
+    .plan-price {
+      font-size: 1.4rem;
+      color: var(--text-color);
+    }
+
+    .plan-features {
+      font-size: 1.2rem;
+      color: var(--text-color);
+      margin-top: 0.8rem;
+    }
+  }
+}
+
+.plans {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.8rem;
+}
+
+.plan-details {
+  display: flex;
+  flex-direction: column;
+}
