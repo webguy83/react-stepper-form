@@ -68,11 +68,11 @@
 }
 
 .plan:hover {
-  border-color: #483eff;
+  border-color: var(--purple);
 }
 
 .plan.selected {
-  border-color: #483eff;
+  border-color: var(--purple);
   background-color: var(--very-light-gray);
 }
 

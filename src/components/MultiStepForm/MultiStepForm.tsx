@@ -3,6 +3,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Step1 from '../Step1/Step1';
 import Step2 from '../Step2/Step2';
+import Step3 from '../Step3/Step3';
 import './MultiStepForm.scss';
 import useFormValidation from '../../hooks/useFormValidation';
 import usePlanSelection from '../../hooks/usePlanSelection';
@@ -15,17 +16,16 @@ const MultiStepForm: React.FC = () => {
     phone: '',
   });
 
-  // Move the plan selection state here
   const { billingType, selectedPlan, handlePlanChange, handleBillingToggle } = usePlanSelection();
   const [step, setStep] = useState(1);
+  const [selectedAddOns, setSelectedAddOns] = useState<Set<string>>(new Set());
   const isMobile = useMediaQuery('(max-width:768px)');
 
   const handleNextStep = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const isValid = handleSubmitValidation(); // Perform full validation before moving forward
-
+    const isValid = handleSubmitValidation();
     if (isValid) {
-      setStep((prev) => prev + 1); // Move to the next step only if the form is valid
+      setStep((prev) => prev + 1);
     }
   };
 
@@ -33,10 +33,22 @@ const MultiStepForm: React.FC = () => {
     setStep((prev) => prev - 1);
   };
 
+  const handleToggleAddOn = (addOnId: string) => {
+    setSelectedAddOns((prev) => {
+      const newSelected = new Set(prev);
+      if (newSelected.has(addOnId)) {
+        newSelected.delete(addOnId);
+      } else {
+        newSelected.add(addOnId);
+      }
+      return newSelected;
+    });
+  };
+
   const stepTitles = [
     { title: 'Personal info', description: 'Please provide your name, email address, and phone number.' },
     { title: 'Select your plan', description: 'You have the option of monthly or yearly billing.' },
-    { title: 'Add-Ons', description: 'Choose your add-ons.' },
+    { title: 'Pick add-ons', description: 'Add-ons help enhance your gaming experience.' },
     { title: 'Summary', description: 'Double-check everything before confirming.' },
   ];
 
@@ -66,7 +78,8 @@ const MultiStepForm: React.FC = () => {
 
           {step === 2 && <Step2 billingType={billingType} selectedPlan={selectedPlan} onBillingToggle={handleBillingToggle} onPlanChange={handlePlanChange} />}
 
-          {/* Other steps will go here */}
+          {step === 3 && <Step3 billingType={billingType} selectedAddOns={selectedAddOns} onToggleAddOn={handleToggleAddOn} />}
+
           {!isMobile && <Footer onBack={step > 1 ? handleGoBack : undefined} />}
         </div>
       </div>
