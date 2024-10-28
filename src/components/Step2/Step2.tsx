@@ -15,10 +15,9 @@ interface Step2Props {
 const Step2: React.FC<Step2Props> = ({ billingType, selectedPlan, onBillingToggle, onPlanChange }) => {
   return (
     <div className='step2-form'>
-      {/* Your plan selection logic */}
+      {/* Plan Selection */}
       <div className='plans'>
-        <label className={`plan ${selectedPlan === 'arcade' ? 'selected' : ''}`}>
-          <input type='radio' name='plan' value='arcade' checked={selectedPlan === 'arcade'} onChange={() => onPlanChange('arcade')} />
+        <button type='button' className={`plan ${selectedPlan === 'arcade' ? 'selected' : ''}`} onClick={() => onPlanChange('arcade')} aria-pressed={selectedPlan === 'arcade'} aria-label='Select Arcade Plan'>
           <div className='plan-content'>
             <img src={arcadeIcon} alt='Arcade Plan Icon' className='icon' />
             <div className='plan-details'>
@@ -27,10 +26,9 @@ const Step2: React.FC<Step2Props> = ({ billingType, selectedPlan, onBillingToggl
               {billingType === 'yearly' && <span className='plan-features'>2 months free</span>}
             </div>
           </div>
-        </label>
+        </button>
 
-        <label className={`plan ${selectedPlan === 'advanced' ? 'selected' : ''}`}>
-          <input type='radio' name='plan' value='advanced' checked={selectedPlan === 'advanced'} onChange={() => onPlanChange('advanced')} />
+        <button type='button' className={`plan ${selectedPlan === 'advanced' ? 'selected' : ''}`} onClick={() => onPlanChange('advanced')} aria-pressed={selectedPlan === 'advanced'} aria-label='Select Advanced Plan'>
           <div className='plan-content'>
             <img src={advancedIcon} alt='Advanced Plan Icon' className='icon' />
             <div className='plan-details'>
@@ -39,10 +37,9 @@ const Step2: React.FC<Step2Props> = ({ billingType, selectedPlan, onBillingToggl
               {billingType === 'yearly' && <span className='plan-features'>2 months free</span>}
             </div>
           </div>
-        </label>
+        </button>
 
-        <label className={`plan ${selectedPlan === 'pro' ? 'selected' : ''}`}>
-          <input type='radio' name='plan' value='pro' checked={selectedPlan === 'pro'} onChange={() => onPlanChange('pro')} />
+        <button type='button' className={`plan ${selectedPlan === 'pro' ? 'selected' : ''}`} onClick={() => onPlanChange('pro')} aria-pressed={selectedPlan === 'pro'} aria-label='Select Pro Plan'>
           <div className='plan-content'>
             <img src={proIcon} alt='Pro Plan Icon' className='icon' />
             <div className='plan-details'>
@@ -51,16 +48,16 @@ const Step2: React.FC<Step2Props> = ({ billingType, selectedPlan, onBillingToggl
               {billingType === 'yearly' && <span className='plan-features'>2 months free</span>}
             </div>
           </div>
-        </label>
+        </button>
       </div>
 
       {/* Billing Type Toggle */}
       <div className='billing-toggle'>
-        <span>Monthly</span>
-        <button type='button' className={`toggle-button ${billingType === 'yearly' ? 'checked' : ''}`} onClick={onBillingToggle} aria-label='Toggle Billing Type'>
+        <span className={`billing-toggle-label ${billingType === 'monthly' ? 'checked' : ''}`}>Monthly</span>
+        <button type='button' className={`toggle-button ${billingType === 'yearly' ? 'checked' : ''}`} onClick={onBillingToggle} aria-label='Toggle Billing Type' role='switch' aria-checked={billingType === 'yearly'}>
           <span className='toggle-switch'></span>
         </button>
-        <span>Yearly</span>
+        <span className={`billing-toggle-label ${billingType === 'yearly' ? 'checked' : ''}`}>Yearly</span>
       </div>
     </div>
   );

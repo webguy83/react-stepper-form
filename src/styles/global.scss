@@ -9,9 +9,10 @@
   --white: #ffffff;
   --pastel-blue: #cfe3ff;
   --dark-blue: #022959;
-  --light-grey: #9699aa;
+  --dark-gray: #9699aa;
   --bright-color: #164a8a;
-  --light-blue: #EFF5FF;
+  --light-blue: #eff5ff;
+  --very-light-gray: #f8f9ff;
 }
 
 @font-face {
@@ -48,7 +49,6 @@ html {
 
 body {
   font-family: 'Ubuntu', sans-serif;
-  background-color: var(--light-blue);
   color: #0b2447;
 }
 
