@@ -8,6 +8,7 @@ import './MultiStepForm.scss';
 import useFormValidation from '../../hooks/useFormValidation';
 import usePlanSelection from '../../hooks/usePlanSelection';
 import useMediaQuery from '../../hooks/useMediaQuery ';
+import Step4 from '../Step4/Step4';
 
 const MultiStepForm: React.FC = () => {
   const { formData, formErrors, isSubmitted, handleFormChange, handleSubmitValidation } = useFormValidation({
@@ -79,6 +80,8 @@ const MultiStepForm: React.FC = () => {
           {step === 2 && <Step2 billingType={billingType} selectedPlan={selectedPlan} onBillingToggle={handleBillingToggle} onPlanChange={handlePlanChange} />}
 
           {step === 3 && <Step3 billingType={billingType} selectedAddOns={selectedAddOns} onToggleAddOn={handleToggleAddOn} />}
+
+          {step === 4 && <Step4 billingType={billingType} selectedPlan={selectedPlan} selectedAddOns={selectedAddOns} onGoToPlanStep={() => setStep(2)} />}
 
           {!isMobile && <Footer onBack={step > 1 ? handleGoBack : undefined} />}
         </div>

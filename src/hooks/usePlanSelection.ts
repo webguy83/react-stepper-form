@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import { Plan } from '../types/plan';
+import { Billing } from '../types/billing';
 
 const usePlanSelection = () => {
-  const [billingType, setBillingType] = useState<'monthly' | 'yearly'>('monthly');
+  const [billingType, setBillingType] = useState<Billing>('monthly');
   const [selectedPlan, setSelectedPlan] = useState<Plan>('arcade');
 
   const handlePlanChange = (plan: Plan) => {

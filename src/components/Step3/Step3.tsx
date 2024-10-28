@@ -1,8 +1,9 @@
 import React from 'react';
 import './Step3.scss';
+import { Billing } from '../../types/billing';
 
 interface Step3Props {
-  billingType: 'monthly' | 'yearly';
+  billingType: Billing;
   selectedAddOns: Set<string>;
   onToggleAddOn: (addOnId: string) => void;
 }

@@ -4,9 +4,10 @@ import arcadeIcon from '../../assets/images/icon-arcade.svg';
 import advancedIcon from '../../assets/images/icon-advanced.svg';
 import proIcon from '../../assets/images/icon-pro.svg';
 import { Plan } from '../../types/plan';
+import { Billing } from '../../types/billing';
 
 interface Step2Props {
-  billingType: 'monthly' | 'yearly';
+  billingType: Billing;
   selectedPlan: string;
   onBillingToggle: () => void;
   onPlanChange: (plan: Plan) => void;
