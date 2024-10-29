@@ -2,6 +2,12 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  .plan-price {
+    font-size: 1.4rem;
+    color: var(--dark-gray);
+    font-weight: 400;
+  }
 }
 
 .billing-toggle {
@@ -92,11 +98,6 @@
   font-weight: bold;
   font-size: 1.6rem;
   color: var(--primary-color);
-}
-
-.plan-price {
-  font-size: 1.4rem;
-  color: var(--dark-gray);
 }
 
 .plan-features {

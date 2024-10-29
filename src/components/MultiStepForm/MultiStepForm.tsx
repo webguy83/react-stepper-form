@@ -50,7 +50,7 @@ const MultiStepForm: React.FC = () => {
     { title: 'Personal info', description: 'Please provide your name, email address, and phone number.' },
     { title: 'Select your plan', description: 'You have the option of monthly or yearly billing.' },
     { title: 'Pick add-ons', description: 'Add-ons help enhance your gaming experience.' },
-    { title: 'Summary', description: 'Double-check everything before confirming.' },
+    { title: 'Finishing up', description: 'Double-check everything looks OK before confirming.' },
   ];
 
   return (
