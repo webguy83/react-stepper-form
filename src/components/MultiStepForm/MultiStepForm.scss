@@ -98,7 +98,14 @@
   max-width: 45rem;
   width: 100%;
   margin: 0 auto;
-  padding: 4rem 0 1.6rem 1.6rem;
+
+  &.confirmed {
+    margin: auto;
+  }
+
+  &.not-confirmed {
+    padding: 4rem 0 1.6rem 1.6rem;
+  }
 }
 
 /* Mobile responsiveness */
@@ -130,6 +137,15 @@
     background-color: var(--white);
     border-radius: 1rem;
     box-shadow: 0rem 2.5rem 4rem -2rem rgba(0, 0, 0, 0.0951141);
+
+    &.confirmed {
+      padding: 7.9rem 2.4rem;
+      margin: -6rem 2rem 0;
+    }
+
+    &.not-confirmed {
+      padding: 2.4rem;
+    }
   }
 
   .sidebar {

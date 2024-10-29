@@ -2,10 +2,11 @@ import React from 'react';
 import './Footer.scss';
 
 interface FooterProps {
+  step: number;
   onBack?: () => void;
 }
 
-const Footer: React.FC<FooterProps> = ({ onBack }) => {
+const Footer: React.FC<FooterProps> = ({ step, onBack }) => {
   return (
     <footer className='form-footer'>
       {onBack && (
@@ -13,8 +14,8 @@ const Footer: React.FC<FooterProps> = ({ onBack }) => {
           Go Back
         </button>
       )}
-      <button type='submit' className='next-step-btn'>
-        Next Step
+      <button type='submit' className={`next-step-btn ${step === 4 ? 'confirm-btn' : ''}`}>
+        {step === 4 ? 'Confirm' : 'Next Step'}
       </button>
     </footer>
   );

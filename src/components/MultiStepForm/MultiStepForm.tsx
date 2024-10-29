@@ -4,11 +4,12 @@ import Footer from '../Footer/Footer';
 import Step1 from '../Step1/Step1';
 import Step2 from '../Step2/Step2';
 import Step3 from '../Step3/Step3';
+import Step4 from '../Step4/Step4';
+import Confirmation from '../Confirmation/Confirmation';
 import './MultiStepForm.scss';
 import useFormValidation from '../../hooks/useFormValidation';
 import usePlanSelection from '../../hooks/usePlanSelection';
 import useMediaQuery from '../../hooks/useMediaQuery ';
-import Step4 from '../Step4/Step4';
 
 const MultiStepForm: React.FC = () => {
   const { formData, formErrors, isSubmitted, handleFormChange, handleSubmitValidation } = useFormValidation({
@@ -20,13 +21,19 @@ const MultiStepForm: React.FC = () => {
   const { billingType, selectedPlan, handlePlanChange, handleBillingToggle } = usePlanSelection();
   const [step, setStep] = useState(1);
   const [selectedAddOns, setSelectedAddOns] = useState<Set<string>>(new Set());
+  const [isConfirmed, setIsConfirmed] = useState(false);
   const isMobile = useMediaQuery('(max-width:768px)');
 
   const handleNextStep = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const isValid = handleSubmitValidation();
-    if (isValid) {
-      setStep((prev) => prev + 1);
+
+    if (step === 4) {
+      setIsConfirmed(true); // Set confirmation state when on Step 4
+    } else {
+      const isValid = handleSubmitValidation();
+      if (isValid) {
+        setStep((prev) => prev + 1);
+      }
     }
   };
 
@@ -72,23 +79,23 @@ const MultiStepForm: React.FC = () => {
         </aside>
 
         {/* Main Content */}
-        <div className='form-content'>
-          <Header title={stepTitles[step - 1].title} description={stepTitles[step - 1].description} />
-
-          {step === 1 && <Step1 formData={formData} formErrors={formErrors} isSubmitted={isSubmitted} onChange={handleFormChange} />}
-
-          {step === 2 && <Step2 billingType={billingType} selectedPlan={selectedPlan} onBillingToggle={handleBillingToggle} onPlanChange={handlePlanChange} />}
-
-          {step === 3 && <Step3 billingType={billingType} selectedAddOns={selectedAddOns} onToggleAddOn={handleToggleAddOn} />}
-
-          {step === 4 && <Step4 billingType={billingType} selectedPlan={selectedPlan} selectedAddOns={selectedAddOns} onGoToPlanStep={() => setStep(2)} />}
-
-          {!isMobile && <Footer onBack={step > 1 ? handleGoBack : undefined} />}
+        <div className={`form-content ${!isConfirmed ? 'not-confirmed' : 'confirmed'}`}>
+          {!isConfirmed && (
+            <>
+              <Header title={stepTitles[step - 1].title} description={stepTitles[step - 1].description} />
+              {step === 1 && <Step1 formData={formData} formErrors={formErrors} isSubmitted={isSubmitted} onChange={handleFormChange} />}
+              {step === 2 && <Step2 billingType={billingType} selectedPlan={selectedPlan} onBillingToggle={handleBillingToggle} onPlanChange={handlePlanChange} />}
+              {step === 3 && <Step3 billingType={billingType} selectedAddOns={selectedAddOns} onToggleAddOn={handleToggleAddOn} />}
+              {step === 4 && <Step4 billingType={billingType} selectedPlan={selectedPlan} selectedAddOns={selectedAddOns} onGoToPlanStep={() => setStep(2)} />}
+              {!isMobile && <Footer step={step} onBack={step > 1 ? handleGoBack : undefined} />}
+            </>
+          )}
+          {isConfirmed && <Confirmation />} {/* Render Confirmation in form-content */}
         </div>
       </div>
 
       {/* Render Footer outside form-content for mobile view */}
-      {isMobile && <Footer onBack={step > 1 ? handleGoBack : undefined} />}
+      {!isConfirmed && isMobile && <Footer step={step} onBack={step > 1 ? handleGoBack : undefined} />}
     </form>
   );
 };
