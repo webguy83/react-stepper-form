@@ -39,7 +39,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [App](https://webguy83.github.io/stepper-form)
+- Live Site URL: [App](https://webguy83.github.io/react-stepper-form)
 
 ## My process
 
