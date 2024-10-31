@@ -79,10 +79,10 @@ const MultiStepForm: React.FC = () => {
         </aside>
 
         {/* Main Content */}
-        <section className={`form-content ${!isConfirmed ? 'not-confirmed' : 'confirmed'}`} aria-labelledby='main-form-content'>
+        <section className={`form-content ${!isConfirmed ? 'not-confirmed' : 'confirmed'}`} aria-labelledby='header-title'>
           {!isConfirmed && (
             <>
-              <Header title={stepTitles[step - 1].headerTitle} description={stepTitles[step - 1].description} />
+              <Header title={stepTitles[step - 1].headerTitle} description={stepTitles[step - 1].description} titleId='header-title' />
               {step === 1 && <Step1 formData={formData} formErrors={formErrors} isSubmitted={isSubmitted} onChange={handleFormChange} />}
               {step === 2 && <Step2 billingType={billingType} selectedPlan={selectedPlan} onBillingToggle={handleBillingToggle} onPlanChange={handlePlanChange} />}
               {step === 3 && <Step3 billingType={billingType} selectedAddOns={selectedAddOns} onToggleAddOn={handleToggleAddOn} />}

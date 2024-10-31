@@ -29,7 +29,7 @@ const Step1: React.FC<Step1Props> = ({ formData, formErrors, isSubmitted, onChan
               </span>
             )}
           </div>
-          <input type='text' id='name' name='name' placeholder='e.g. Stephen King' value={formData.name} onChange={onChange} aria-describedby='name-error' className={formErrors.name && isSubmitted ? 'error' : ''} />
+          <input type='text' id='name' name='name' placeholder='e.g. Stephen King' value={formData.name} onChange={onChange} aria-describedby={formErrors.name && isSubmitted ? 'name-error' : undefined} className={formErrors.name && isSubmitted ? 'error' : ''} />
         </div>
 
         <div className='form-group'>
@@ -41,7 +41,7 @@ const Step1: React.FC<Step1Props> = ({ formData, formErrors, isSubmitted, onChan
               </span>
             )}
           </div>
-          <input type='email' id='email' name='email' placeholder='e.g. stephenking@lorem.com' value={formData.email} onChange={onChange} aria-describedby='email-error' className={formErrors.email && isSubmitted ? 'error' : ''} />
+          <input type='email' id='email' name='email' placeholder='e.g. stephenking@lorem.com' value={formData.email} onChange={onChange} aria-describedby={formErrors.email && isSubmitted ? 'email-error' : undefined} className={formErrors.email && isSubmitted ? 'error' : ''} />
         </div>
 
         <div className='form-group'>
@@ -53,7 +53,7 @@ const Step1: React.FC<Step1Props> = ({ formData, formErrors, isSubmitted, onChan
               </span>
             )}
           </div>
-          <input type='tel' id='phone' name='phone' placeholder='e.g. +1 234 567 890' value={formData.phone} onChange={onChange} aria-describedby='phone-error' className={formErrors.phone && isSubmitted ? 'error' : ''} />
+          <input type='tel' id='phone' name='phone' placeholder='e.g. +1 234 567 890' value={formData.phone} onChange={onChange} aria-describedby={formErrors.phone && isSubmitted ? 'phone-error' : undefined} className={formErrors.phone && isSubmitted ? 'error' : ''} />
         </div>
       </div>
     </div>
