@@ -64,7 +64,7 @@ const MultiStepForm: React.FC = () => {
     <form className='center-wrapper' onSubmit={handleNextStep}>
       <div className='multistep-container'>
         {/* Sidebar */}
-        <aside className='sidebar'>
+        <aside className='sidebar' aria-label='Progress steps'>
           <ol className='steps'>
             {stepTitles.map((item, index) => (
               <li key={index} className={`step ${step === index + 1 ? 'active' : ''}`}>
@@ -79,7 +79,7 @@ const MultiStepForm: React.FC = () => {
         </aside>
 
         {/* Main Content */}
-        <div className={`form-content ${!isConfirmed ? 'not-confirmed' : 'confirmed'}`}>
+        <section className={`form-content ${!isConfirmed ? 'not-confirmed' : 'confirmed'}`} aria-labelledby='main-form-content'>
           {!isConfirmed && (
             <>
               <Header title={stepTitles[step - 1].headerTitle} description={stepTitles[step - 1].description} />
@@ -91,7 +91,7 @@ const MultiStepForm: React.FC = () => {
             </>
           )}
           {isConfirmed && <Confirmation />} {/* Render Confirmation in form-content */}
-        </div>
+        </section>
       </div>
 
       {/* Render Footer outside form-content for mobile view */}

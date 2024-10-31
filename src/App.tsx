@@ -3,8 +3,10 @@ import MultiStepForm from './components/MultiStepForm/MultiStepForm';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <MultiStepForm />
+    <div className='App'>
+      <main>
+        <MultiStepForm />
+      </main>
     </div>
   );
 };

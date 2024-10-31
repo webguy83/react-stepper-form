@@ -38,7 +38,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [Solution](https://www.frontendmentor.io/solutions/responsive-multi-step-form-in-react-and-typescript-yiO_wjXCgz)
 - Live Site URL: [App](https://webguy83.github.io/react-stepper-form)
 
 ## My process
