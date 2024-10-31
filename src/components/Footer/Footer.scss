@@ -12,8 +12,10 @@
     cursor: pointer;
     padding: 0;
 
-    &:hover {
-      color: var(--dark-blue);
+    @media (hover: hover) {
+      &:hover {
+        color: var(--dark-blue);
+      }
     }
   }
 
@@ -27,17 +29,21 @@
     cursor: pointer;
     margin-left: auto;
 
-    &:hover {
-      background-color: var(--bright-color);
+    @media (hover: hover) {
+      &:hover {
+        background-color: var(--bright-color);
+      }
     }
   }
 
   .confirm-btn {
     background-color: var(--purple);
-  }
 
-  .confirm-btn:hover {
-    background-color: #928cff;
+    @media (hover: hover) {
+      &:hover {
+        background-color: #928cff;
+      }
+    }
   }
 }
 
