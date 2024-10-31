@@ -54,10 +54,10 @@ const MultiStepForm: React.FC = () => {
   };
 
   const stepTitles = [
-    { title: 'Personal info', description: 'Please provide your name, email address, and phone number.' },
-    { title: 'Select your plan', description: 'You have the option of monthly or yearly billing.' },
-    { title: 'Pick add-ons', description: 'Add-ons help enhance your gaming experience.' },
-    { title: 'Finishing up', description: 'Double-check everything looks OK before confirming.' },
+    { title: 'Your info', headerTitle: 'Personal info', description: 'Please provide your name, email address, and phone number.' },
+    { title: 'Select Plan', headerTitle: 'Select your plan', description: 'You have the option of monthly or yearly billing.' },
+    { title: 'Add-ons', headerTitle: 'Pick add-ons', description: 'Add-ons help enhance your gaming experience.' },
+    { title: 'Summary', headerTitle: 'Finishing up', description: 'Double-check everything looks OK before confirming.' },
   ];
 
   return (
@@ -82,7 +82,7 @@ const MultiStepForm: React.FC = () => {
         <div className={`form-content ${!isConfirmed ? 'not-confirmed' : 'confirmed'}`}>
           {!isConfirmed && (
             <>
-              <Header title={stepTitles[step - 1].title} description={stepTitles[step - 1].description} />
+              <Header title={stepTitles[step - 1].headerTitle} description={stepTitles[step - 1].description} />
               {step === 1 && <Step1 formData={formData} formErrors={formErrors} isSubmitted={isSubmitted} onChange={handleFormChange} />}
               {step === 2 && <Step2 billingType={billingType} selectedPlan={selectedPlan} onBillingToggle={handleBillingToggle} onPlanChange={handlePlanChange} />}
               {step === 3 && <Step3 billingType={billingType} selectedAddOns={selectedAddOns} onToggleAddOn={handleToggleAddOn} />}
