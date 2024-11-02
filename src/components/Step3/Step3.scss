@@ -4,7 +4,7 @@
   gap: 1.6rem;
 }
 
-.add-on {
+.add-on-wrapper {
   display: flex;
   align-items: center;
   border: 1px solid var(--gray);
@@ -21,26 +21,26 @@
   @media (max-width: 768px) {
     padding: 1.1rem 1.6rem;
   }
-}
 
-.add-on.selected {
-  border-color: var(--purple);
-  background-color: var(--very-light-gray);
+  &.selected {
+    border-color: var(--purple);
+    background-color: var(--very-light-gray);
+  }
 }
 
 /* Hide the default checkbox */
-.add-on input[type='checkbox'] {
+.add-on-wrapper input[type='checkbox'] {
   appearance: none;
-  width: 2rem; /* Set width */
-  height: 2rem; /* Set height */
-  min-width: 2rem; /* Maintain square aspect ratio */
-  min-height: 2rem; /* Maintain square aspect ratio */
+  width: 2rem;
+  height: 2rem;
+  min-width: 2rem;
+  min-height: 2rem;
   margin-right: 2.4rem;
   border: 2px solid var(--gray);
   border-radius: 0.4rem;
   background-color: transparent;
   cursor: pointer;
-  flex-shrink: 0; /* Prevent shrinking */
+  flex-shrink: 0;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 
   @media (max-width: 768px) {
@@ -49,14 +49,14 @@
 }
 
 /* When checkbox is checked */
-.add-on input[type='checkbox']:checked {
+.add-on-wrapper input[type='checkbox']:checked {
   background-color: var(--purple);
   border-color: var(--purple);
   position: relative;
 }
 
 /* Add a checkmark icon when checked */
-.add-on input[type='checkbox']:checked::after {
+.add-on-wrapper input[type='checkbox']:checked::after {
   content: '✔';
   color: var(--white);
   font-size: 1.2rem;
