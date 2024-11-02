@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/react-stepper-form/static/css/main.d011f69d.css",
-    "main.js": "/react-stepper-form/static/js/main.70a01936.js",
+    "main.css": "/react-stepper-form/static/css/main.2e0468df.css",
+    "main.js": "/react-stepper-form/static/js/main.294c0e85.js",
     "static/js/453.f05b92db.chunk.js": "/react-stepper-form/static/js/453.f05b92db.chunk.js",
     "static/media/Ubuntu-Regular.ttf": "/react-stepper-form/static/media/Ubuntu-Regular.1cbb1b79a23478cc89ad.ttf",
     "static/media/Ubuntu-Medium.ttf": "/react-stepper-form/static/media/Ubuntu-Medium.e37c5546eb1a6efc4818.ttf",
@@ -13,12 +13,12 @@
     "static/media/icon-pro.svg": "/react-stepper-form/static/media/icon-pro.2e7e377da9c658d608624304a0f8dae6.svg",
     "index.html": "/react-stepper-form/index.html",
     "static/media/icon-arcade.svg": "/react-stepper-form/static/media/icon-arcade.a08c098289a31bb2f66d675be71565b3.svg",
-    "main.d011f69d.css.map": "/react-stepper-form/static/css/main.d011f69d.css.map",
-    "main.70a01936.js.map": "/react-stepper-form/static/js/main.70a01936.js.map",
+    "main.2e0468df.css.map": "/react-stepper-form/static/css/main.2e0468df.css.map",
+    "main.294c0e85.js.map": "/react-stepper-form/static/js/main.294c0e85.js.map",
     "453.f05b92db.chunk.js.map": "/react-stepper-form/static/js/453.f05b92db.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.d011f69d.css",
-    "static/js/main.70a01936.js"
+    "static/css/main.2e0468df.css",
+    "static/js/main.294c0e85.js"
   ]
 }
